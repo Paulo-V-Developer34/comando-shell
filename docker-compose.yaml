@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:-debian:stable-slim}
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app                  # bind mount: scripts editáveis no seu PC
+      - projetos:/srv/projetos   # volume nomeado: projetos com ACL
+
+volumes:
+  projetos:
